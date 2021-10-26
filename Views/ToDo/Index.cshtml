@@ -1,0 +1,42 @@
+﻿@using ViewComponentSample.Models
+@addTagHelper *, ViewCompFinal
+@model ViewCompFinal.ViewModels.IndexViewModel
+
+<h2>ToDo</h2>
+
+<table>
+    <tr>
+        <th>
+            Is Done
+        </th>
+        <th>
+            Priority
+        </th>
+        <th>
+            Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.TodoItems)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <!-- This doesn't work-->
+    @Html.Raw(Model.PageLayout)
+    <!-- Doesn't work either-->
+    @(Model.PageLayout)
+    <vc:priority-list max-priority="2" is-done="false"></vc:priority-list>
+</div>
